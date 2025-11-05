@@ -422,6 +422,14 @@ const totalTrailMiles = (trails) => {
 
     return Math.round(total)
 }
+//Get the sum of all the river miles
+const totalRiverTrails = (rivers) => {
+    let total = 0
+    for (const river of rivers) {
+        total += river.length
+    }
+    return total
+}
 
 // Get the shortest of all trails
 const shortyTrail = (trailArray) => {
@@ -432,6 +440,17 @@ const shortyTrail = (trailArray) => {
         }
     }
 
+    return shortest
+}
+
+//Get the shortest Rivertail
+const shortRiver = () => {
+    let shortest = Infinity
+    for (const river of rivers) {
+        if(river.length < shortest){
+            shortest = river.length
+        }
+    }
     return shortest
 }
 
@@ -446,6 +465,18 @@ const longTrail = (allTrails) => {
 
     return longest
 }
+// Get the longest rivertrail
+const longRiver = () => {
+    let longest = 0 
+    for (const river of rivers) {
+        if(river.length > longest){
+            longest = river.length
+        }
+    }
+    return longest 
+}
+
+
 
 
 console.log(`
@@ -476,4 +507,12 @@ console.log(`The shortest trail is ${shortTrail} kilometers`)
 
 const longest = longTrail(trails)
 console.log(`The longest trail is ${longest} kilometers`)
-
+console.log('***************************************************')
+console.log('*****              R I V E R S                *****')
+console.log('***************************************************')
+const riverTotal = totalRiverTrails(rivers)
+console.log(`We offer expert guidance on ${riverTotal} kilometers of scenic rivers across the US`)
+const shortestRiver = shortRiver(rivers)
+const longestRiver = longRiver(rivers)
+console.log(`The shortest river tour is ${shortestRiver} kilometers`)
+console.log(`The longest river tour is ${longestRiver} kilometers`)
