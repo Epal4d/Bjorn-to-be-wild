@@ -475,6 +475,47 @@ const longRiver = () => {
     }
     return longest 
 }
+//Find most expensive trails 
+const expensiveTrails = (trails) => {
+    priceyTrails = []
+    for (const trail of trails){
+        if (trail.price == "$$$$" || "$$$$$"){
+            priceyTrails.push(trail.trailName)
+        }
+        
+    }
+    return priceyTrails
+}
+//Find least expensive trails
+const inexpensiveTrails = (trails) => {
+    const cheapTrails = []
+    for (const trail of trails) {
+        if (trail.price == "$"){
+            cheapTrails.push(trail.trailName)
+        }
+    }
+    return cheapTrails
+}
+
+const expensiveRivers = (rivers) => {
+    const priceyRivers = []
+    for (const river of rivers) {
+        if (river.price == "$$$$" || "$$$$$"){
+            priceyRivers.push(river.river)
+        }
+    }
+    return priceyRivers
+}
+
+const inexpensiveRivers = (rivers) => {
+    const cheapRivers = []
+    for (const river of rivers) {
+        if (river.price == "$") {
+            cheapRivers.push(river.river)
+        } 
+    }
+    return cheapRivers
+}
 
 
 
@@ -511,8 +552,27 @@ console.log('***************************************************')
 console.log('*****              R I V E R S                *****')
 console.log('***************************************************')
 const riverTotal = totalRiverTrails(rivers)
+
 console.log(`We offer expert guidance on ${riverTotal} kilometers of scenic rivers across the US`)
+
 const shortestRiver = shortRiver(rivers)
 const longestRiver = longRiver(rivers)
+
 console.log(`The shortest river tour is ${shortestRiver} kilometers`)
 console.log(`The longest river tour is ${longestRiver} kilometers`)
+
+const mostExpensiveTrails = expensiveTrails(trails)
+
+console.log(`The most expensive are: \n${mostExpensiveTrails.join("\n")}`)
+
+const leastExpensiveTrails = inexpensiveTrails(trails)
+
+console.log(`\n\nThe least expensive trails are: \n${leastExpensiveTrails.join("\n")}`)
+
+const mostExpensiveRivers = expensiveRivers(rivers)
+
+console.log(`\n\nThe most expensive river tours are: \n${mostExpensiveRivers.join("\n")}`)
+
+const leastExpensiveRivers = inexpensiveRivers(rivers)
+
+console.log(`\n\nThe least expensive river tours are: \n${leastExpensiveRivers.join("\n")}`)
