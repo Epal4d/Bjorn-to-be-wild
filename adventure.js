@@ -187,7 +187,7 @@ const trails = [{
     price: "$$$$",
     latitude: 49.988725,
     longitude: 20.7001411,
-    plantHighlights: "Jepson's Linanthus",
+    plantHighlight: "Jepson's Linanthus",
     trailName: "Brudersons Parkway",
     length: 39.46
 }, {
@@ -517,6 +517,22 @@ const inexpensiveRivers = (rivers) => {
     return cheapRivers
 }
 
+const createTrailDetails = (trails) => {
+    let trailDetailString = ""
+    for (const trail of trails) {
+        trailDetailString += `${trail.trailName} starts at [${trail.latitude},${trail.longitude}] and is ${trail.length} kilometers long. The highlighted plant for the trip is ${trail.plantHighlight}\n\n`
+    }
+    return trailDetailString
+}
+
+const createRiverDetails = (rivers) => {
+    let riverDetailsString = ""
+    for (const river of rivers) {
+        riverDetailsString += `${river.river} starts at [${river.latitude},${river.longitude}] and is ${river.length} Kilometers long. The unquie fish for the trip is ${river.uniqueFish}\n\n`
+    }
+    return riverDetailsString
+}
+
 
 
 
@@ -548,6 +564,21 @@ console.log(`The shortest trail is ${shortTrail} kilometers`)
 
 const longest = longTrail(trails)
 console.log(`The longest trail is ${longest} kilometers`)
+
+const leastExpensiveTrails = inexpensiveTrails(trails)
+console.log(`\n\nThe least expensive trails are: \n${leastExpensiveTrails.join("\n")}`)
+
+
+const mostExpensiveTrails = expensiveTrails(trails)
+console.log(`The most expensive are: \n${mostExpensiveTrails.join("\n")}`)
+
+console.log('TRAIL DETAILS:')
+console.log('-----------------------------')
+
+const trailDetails = createTrailDetails(trails)
+
+console.log(trailDetails)
+
 console.log('***************************************************')
 console.log('*****              R I V E R S                *****')
 console.log('***************************************************')
@@ -561,18 +592,18 @@ const longestRiver = longRiver(rivers)
 console.log(`The shortest river tour is ${shortestRiver} kilometers`)
 console.log(`The longest river tour is ${longestRiver} kilometers`)
 
-const mostExpensiveTrails = expensiveTrails(trails)
 
-console.log(`The most expensive are: \n${mostExpensiveTrails.join("\n")}`)
 
-const leastExpensiveTrails = inexpensiveTrails(trails)
+const leastExpensiveRivers = inexpensiveRivers(rivers)
 
-console.log(`\n\nThe least expensive trails are: \n${leastExpensiveTrails.join("\n")}`)
+console.log(`\n\nThe least expensive river tours are: \n${leastExpensiveRivers.join("\n")}`)
 
 const mostExpensiveRivers = expensiveRivers(rivers)
 
 console.log(`\n\nThe most expensive river tours are: \n${mostExpensiveRivers.join("\n")}`)
 
-const leastExpensiveRivers = inexpensiveRivers(rivers)
+console.log("\n\nRIVER DETAILS")
+console.log("---------------------------------")
 
-console.log(`\n\nThe least expensive river tours are: \n${leastExpensiveRivers.join("\n")}`)
+const  riverDetails = createRiverDetails(rivers)
+console.log(riverDetails)
